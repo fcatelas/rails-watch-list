@@ -1,7 +1,6 @@
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" />
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,11 +9,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="http://localhost:3000/">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Messages</a>
-          </li>
+
           <li class="nav-item dropdown">
             <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -29,17 +26,13 @@
     </div>
   </div>
 </div>
-<form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
-  <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
-    <button name="button" type="submit" class="btn btn-flat">
-      <i class="fas fa-search"></i> Search
     </button>
   </div>
 </form>
-  <div class="card-category card-large" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('') %>" >
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('') %>" >
 <div class="cover mb-4 d-flex align-items-center justify-content-center">
   <div class="text-center text-white">
+
     <h1>Save any kind of movies</h1>
     <h3 class="typed-js" data-controller="typed-js"></h3>
   </div>
@@ -47,18 +40,25 @@
 <div class="container py-5">
   <div clas   s="d-flex align-items-center justify-content-between mb-3">
     <h3 class="mb-0">My Lists</h3>
-    <%= link_to "Create a movie list", new_list_path, class: "btn btn-gradient" %>
+
   </div>
   <div class="row">
     <% @lists.each do |list| %>
       <div class="co-12 col-sm-6 col-md-4 mb-3">
         <%= link_to list_path(list), class:"text-decoration-none" do %>
-          <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(white)), url( asset_path('list_background.jpg') %>)">
+          <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url( asset_path('list_background.jpg') %>)">
             <%= list.name %>
           </div>
     <% end %>
       </div>
     <% end %>
+
+      <h3>Create a new list</h3>
+     <%= simple_form_for @list do |f| %>
+        <%= f.input :name, placeholder: 'Drama' %>
+        <%= f.input :photo, as: :file %>
+        <%= f.submit class: 'btn btn-flat' %>
+     <% end %>
 
   <div class="footer">
   <div class="footer-links">
@@ -72,20 +72,5 @@
     This footer is made with <i class="fas fa-heart"></i> at Le Wagon
   </div>
   </div>
-    <div class="container py-5">
-  <div class="row">
-    <div class="col-12 col-md-6 offset-lg-3">
-      <div class="bg-white rounded p-3 shadow">
-        <h3>Create a new list</h3>
-        <%= simple_form_for @list do |f| %>
-          <%= f.input :name, placeholder: 'Drama' %>
-          <%= f.input :photo, as: :file %>
-          <%= f.submit class: 'btn btn-flat' %>
-        <% end %>
-
-      </div>
-    </div>
-  </div>
-</div>
   </div>
 </div>
